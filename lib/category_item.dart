@@ -11,13 +11,9 @@ class CategoryItem extends StatelessWidget {
 
 //Method to have the ability to pass to the next page.
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryMealsScreen(id, title);
-        },
-      ),
-    );
+    //Instead of push, we will use pushNamed, so the route can
+    //receive a valid tails to this class.
+    Navigator.of(ctx).pushNamed('/category-meals', arguments: {'id': id, 'title': title }));
   }
 
   @override
