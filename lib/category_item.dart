@@ -13,14 +13,19 @@ class CategoryItem extends StatelessWidget {
   void selectCategory(BuildContext ctx) {
     //Instead of push, we will use pushNamed, so the route can
     //receive a valid tails to this class.
-    Navigator.of(ctx).pushNamed('/category-meals', arguments: {'id': id, 'title': title }));
+    //Passing map to hold a value and send it as an argument to the main class.
+    Navigator.of(ctx).pushNamed(
+      CategoryMealsScreen.routeName,
+      arguments: {'id': id, 'title': title},
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    //This class provides a ripple effect whenever we press over it.
     return InkWell(
       onTap: () => selectCategory(context),
-      splashColor: Theme.of(context).primaryColor,
+      splashColor: Colors.black,
       borderRadius: BorderRadius.circular(10),
       child: Container(
         padding: const EdgeInsets.all(15),
