@@ -1,7 +1,11 @@
+//importing this class since is the one that allows to use the "required"
+//keyword to make the variables a must for each meal.
 import 'package:flutter/foundation.dart';
 
+//Creating enums to have access to distinct types of data without having
+//to memorize exactly the possible names that the variable accepts.
 enum Complexity { Simple, Challenging, Hard }
-enum Affordability { Affordable, Pricy, Luxurious }
+enum Affordability { Affordable, Pricey, Luxurious }
 
 class Meal {
   final String id;
@@ -13,12 +17,12 @@ class Meal {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final bool isGluttenFree;
+  final bool isGlutenFree;
   final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
 
-  Meal(
+  const Meal(
       {@required this.id,
       @required this.categories,
       @required this.title,
@@ -28,7 +32,7 @@ class Meal {
       @required this.duration,
       @required this.complexity,
       @required this.affordability,
-      @required this.isGluttenFree,
+      @required this.isGlutenFree,
       @required this.isLactoseFree,
       @required this.isVegan,
       @required this.isVegetarian});
