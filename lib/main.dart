@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import './screens/tabs_screen.dart';
 import './screens/category_meals_screen.dart';
 import './screens/meal_detail_screen.dart';
 
@@ -27,11 +29,21 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                   fontFamily: 'RobotoCondensed',
                   fontWeight: FontWeight.bold))),
-      home: CategoriesScreen(),
+      home: TabsScreen(),
       routes: {
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },
+
+      //Generating a different form to call pages.
+      //Works if we use named routes.
+      //This will work as support in case we try to access a route that is
+      //declared on the routes above.
+      /*    onGenerateRoute: (settings) {
+        /* return MaterialPageRoute(
+          builder: (ctx) => CategoriesScreen(),
+        ); */
+      }, */
       //Adding unknown route in order to make sure the user always
       //see a screen even if this screen does not exist, 404 page.
       onUnknownRoute: (settings) {
