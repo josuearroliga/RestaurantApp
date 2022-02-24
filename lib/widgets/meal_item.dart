@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import '../screens/meal_detail_screen.dart';
 
 import '../models/meal.dart';
 
 //In theory this is all we want to show in each card.
 class MealItem extends StatelessWidget {
+  final String id;
   final Affordability affordability;
   final String mealTitle;
   final Complexity mealComplexity;
@@ -11,7 +13,8 @@ class MealItem extends StatelessWidget {
   final String imageUrl;
 
   MealItem(
-      {@required this.affordability,
+      {@required this.id,
+      @required this.affordability,
       @required this.imageUrl,
       @required this.mealComplexity,
       @required this.mealDuration,
@@ -51,12 +54,14 @@ class MealItem extends StatelessWidget {
     }
   }
 
-  void selectMeal() {}
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         //color: Colors.red,
         shape: RoundedRectangleBorder(

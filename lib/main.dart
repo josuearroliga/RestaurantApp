@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/category_meals_screen.dart';
+import './screens/category_meals_screen.dart';
+import './screens/meal_detail_screen.dart';
 
 import 'screens/categories_screen.dart';
 
@@ -29,6 +30,12 @@ class MyApp extends StatelessWidget {
       home: CategoriesScreen(),
       routes: {
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      //Adding unknown route in order to make sure the user always
+      //see a screen even if this screen does not exist, 404 page.
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }
