@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/meal_detail_screen.dart';
 
+import '../screens/meal_detail_screen.dart';
 import '../models/meal.dart';
 
 //In theory this is all we want to show in each card.
@@ -11,6 +11,7 @@ class MealItem extends StatelessWidget {
   final Complexity mealComplexity;
   final int mealDuration;
   final String imageUrl;
+  final Function removeItem;
 
   MealItem(
       {@required this.id,
@@ -18,7 +19,8 @@ class MealItem extends StatelessWidget {
       @required this.imageUrl,
       @required this.mealComplexity,
       @required this.mealDuration,
-      @required this.mealTitle});
+      @required this.mealTitle,
+      @required this.removeItem});
 
 //Creating a getter to check the enum result.
   String get complexityText {
@@ -55,7 +57,15 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: id)
+        .then((result) {
+      //If we brinf data from the page we where before, then that id will be stored
+      //and will work as an index to find and delete.
+      if (result != null) {
+        removeItem(result);
+      }
+    });
   }
 
   @override

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '/widgets/main_drawer.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
+  static const routeName = '/tabs-screen';
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -42,6 +44,7 @@ class _TabsScreenState extends State<TabsScreen> {
         //We will now use the data in the Map to dinamically change the title.
         title: Text(_pages[_selectedPageIndex]['title']),
       ),
+      drawer: MainDrawer(),
       //We now reference our list and pass the index, in this case, hte one
       //that onTap sent to the method after the user clicked the button.
       //We now make the reference to the List of Maps we just created.
