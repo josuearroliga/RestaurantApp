@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import './screens/settings_screen.dart';
 import './screens/tabs_screen.dart';
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DeliMeals',
+      debugShowCheckedModeBanner: false,
+      title: 'Meals',
       theme: ThemeData(
-          primarySwatch: Colors.green,
-          accentColor: Colors.black,
+          primarySwatch: Colors.indigo,
+          accentColor: Colors.amberAccent,
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(

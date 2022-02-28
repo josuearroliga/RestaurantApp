@@ -70,7 +70,8 @@ class MealDetailScreen extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                       child: Text(
                         mealFinder.ingredients[index],
-                        style: TextStyle(fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, color: Colors.white),
                       )),
                 ),
                 itemCount: mealFinder.ingredients.length,
