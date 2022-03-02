@@ -11,7 +11,6 @@ class MealItem extends StatelessWidget {
   final Complexity mealComplexity;
   final int mealDuration;
   final String imageUrl;
-  final Function removeItem;
 
   MealItem(
       {@required this.id,
@@ -19,8 +18,7 @@ class MealItem extends StatelessWidget {
       @required this.imageUrl,
       @required this.mealComplexity,
       @required this.mealDuration,
-      @required this.mealTitle,
-      @required this.removeItem});
+      @required this.mealTitle});
 
 //Creating a getter to check the enum result.
   String get complexityText {
@@ -63,7 +61,7 @@ class MealItem extends StatelessWidget {
       //If we brinf data from the page we where before, then that id will be stored
       //and will work as an index to find and delete.
       if (result != null) {
-        removeItem(result);
+        //removeItem(result);
       }
     });
   }

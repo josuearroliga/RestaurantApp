@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import '/widgets/main_drawer.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
+import '../models/meal.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs-screen';
+//Receiving the parameter sent via the route.
+  final List<Meal> favoritedMeals;
+
+  TabsScreen(this.favoritedMeals);
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -13,16 +19,23 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   //Creates the list of pages that wants to load.
   //We change this for a map to have the ability to also change the title.
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoriesScreen(),
-      'title': 'Categories',
-    },
-    {
-      'page': FavoritesScreen(),
-      'title': 'Your Favorites',
-    },
-  ];
+  List<Map<String, Object>> _pages;
+
+//Since the reserved word "widget" cannot be accessed when initializing,
+//we need to initialize inside the init state.
+  initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        //We send the data that we just received to the favs class.
+        'page': FavoritesScreen(widget.favoritedMeals),
+        'title': 'Your Favorites',
+      },
+    ];
+  }
 
 //Creates a variable to save the index of the page that wants to show
 //the onTap method in the bottomMenuBar passes the index for the icons
